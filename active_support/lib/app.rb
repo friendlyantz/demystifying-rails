@@ -82,4 +82,27 @@ class App
     end
     puts duck.acts_like?(:duck)
   end
+
+  def to_param_check
+    puts "To param check".red
+    require "active_support/core_ext"
+    puts [:hey, true, "babe", false, 777, nil, 22.2].to_param
+  end
+
+  def to_query_check
+    puts "To query check".red
+    require "active_support/core_ext"
+    q = {a: 1, b: 2}.to_query
+    puts q.to_s.green
+    q = {:a => 1, "b" => 2}.to_query("boobs")
+    puts q.to_s.green
+  end
+
+  def with_options_check
+    puts "With options check".red
+    require "active_support/core_ext"
+    OpenStruct.with_options lala: :dida do |o|
+      puts o.new.to_s.yellow
+    end
+  end
 end

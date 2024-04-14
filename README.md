@@ -17,3 +17,8 @@ breaking down Ruby on Rails parts and demistifying it
 # Active Support
 
 [docs](https://guides.rubyonrails.org/active_support_core_extensions.html)
+
+- `with_option`
+- `try`
+- `hash_with_indifferent_access`
+- `presnece`
