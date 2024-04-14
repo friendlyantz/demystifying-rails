@@ -105,4 +105,22 @@ class App
       puts o.new.to_s.yellow
     end
   end
+
+  def instance_method_check
+    puts "Instance method check".red
+    require "active_support/core_ext"
+    duck = OpenStruct.new(a: 1, b: 2)
+    duck.instance_variable_set(:@greening_sound, "Quack!")
+    puts duck.instance_values
+  end
+
+  def in_check_and_supress
+    puts "In check".red
+    puts 1.in?([1, 2])        # => true
+    puts "lo".in?("hello")   # => true
+    puts 25.in?(30..50)      # => false
+    suppress(ArgumentError) do
+      puts 1.in?(1)            # => ArgumentError
+    end
+  end
 end

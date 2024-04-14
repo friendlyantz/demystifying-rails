@@ -22,3 +22,5 @@ breaking down Ruby on Rails parts and demistifying it
 - `try`
 - `hash_with_indifferent_access`
 - `presnece`
+- `in?`
+- to_json is better implemented than JSON gem
