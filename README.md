@@ -2,13 +2,22 @@ breaking down Ruby on Rails parts and demistifying it
 
 - [ ] rake
 - [ ] rack
-- [x] ActiveSupport
+- [x] [ActiveSupport](https://guides.rubyonrails.org/active_support_core_extensions.html)
 - [x] hash_with_indifferent_access gotchas
 - [ ] ActiveRecord
+  - [ ] [basics](https://guides.rubyonrails.org/active_record_basics.html)
+  - [ ] [migrations](https://guides.rubyonrails.org/active_record_migrations.html)
+  - [ ] [validations](https://guides.rubyonrails.org/active_record_validations.html)
+  - [ ] [callbacks](https://guides.rubyonrails.org/active_record_callbacks.html)
+  - [ ] [Associations](https://guides.rubyonrails.org/association_basics.html)
+  - [ ] [Query Interface](https://guides.rubyonrails.org/active_record_querying.html)
 - [ ] ActiveModel
 - [ ] ActiveMailer - running as standalone mailer
 - [ ] ActiveJob
-- [ ] others are too intertwined dependencies on the rest of rails to run individually: ActionCable, ActionVeiew, ActionController - these are better run inside rails
+- [ ] others are too intertwined dependencies on the rest of rails to run individually - these are better run inside rails:
+  - ActionCable,
+  - ActionVeiew,
+  - ActionController
 - [ ] DSLs in rails/ruby - RSpec, Routes
 - [ ] Routes: sinatra/hanami/Roda better for
 - [ ] templates: ERB
