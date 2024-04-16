@@ -52,6 +52,14 @@ Run it
 rake
 # or for debugging
 rake --trace
+# dump list of prerequisites
+rake -P
+```
+
+you can add trace rules to your Rakefile to help with debugging:
+
+```ruby
+Rake.application.options.trace_rules = true
 ```
 
 # Active Support

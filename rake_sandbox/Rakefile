@@ -7,4 +7,19 @@ task :instrustions do
   current_dir = `basename $(pwd)`.strip.yellow
   puts "Welcome #{user} to the #{current_dir} directory"
   puts "This is the instrustions task".red
+  puts <<~HEREDOC
+
+    Getting started
+
+    rake install                  # Install dependencies
+    rake lint                     # Run linter
+  HEREDOC
+end
+
+task :install do
+  sh "bundle install"
+end
+
+task :lint do
+  sh "bundle exec rubocop -a"
 end
