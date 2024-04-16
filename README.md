@@ -28,6 +28,12 @@ breaking down Ruby on Rails parts and demistifying it
 
 [free course by Avdi Grim](https://graceful.dev/courses/the-freebies/modules/rake-and-project-automation/topic/episode-129-rake/)
 
+## cli docs
+
+```sh
+ri FileUtils
+```
+
 ## Basic FileList and script
 
 create a basic `Rakefile`:
@@ -54,12 +60,43 @@ rake
 rake --trace
 # dump list of prerequisites
 rake -P
+# for quiet output
+rake -q
 ```
 
 you can add trace rules to your Rakefile to help with debugging:
 
 ```ruby
 Rake.application.options.trace_rules = true
+```
+
+## List files
+  
+```ruby
+Rake::FileList.new('**/*')
+  .pathmap("%f") # => ["README.md", "subdir", "ch1.md", "Rakefile"]
+  .pathmap("%p") # => ["README.md", "subdir", "subdir/ch1.md", "Rakefile"]
+  .pathmap("%n") # => ["README", "subdir", "ch1", "Rakefile"]
+  .pathmap("%d") # => [".", "subdir", "subdir"]
+  .pathmap("%x") # => ["md", "", "md", ""]
+  .pathmap("%X") # => ["md", "", "md", ""]
+```
+
+## Directory
+
+```ruby
+directory 'ship_it🚢'
+
+task list_files: 'ship_it🚢' do # dependency dir
+  # ...
+```
+
+## Cleaning generated files
+
+```ruby
+task :clean do
+  rm_rf 'ship_it🚢'
+end
 ```
 
 # Active Support
