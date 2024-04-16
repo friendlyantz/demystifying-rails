@@ -99,6 +99,15 @@ task :clean do
 end
 ```
 
+## parallel execution
+
+refer Rakefile in `rake_sandbox/2_parallel` dir
+
+```ruby
+task single: files.ext('.html')
+multitask parallel: files.ext('.html')
+```
+
 # Active Support
 
 [docs](https://guides.rubyonrails.org/active_support_core_extensions.html)

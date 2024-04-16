@@ -1,0 +1,24 @@
+task default: :generate_md
+
+task :generate_md do
+  9.times do |i|
+    File.open("file#{i}.md", 'w') do |f|
+      100_000.times { f.puts("# Heading\nThis is some text.") }
+    end
+  end
+end
+
+task :clean do
+  sh 'rm -rf file*.{md,html}'
+  # rm_rf 'file*.{md,html}'
+  Rake::Task[:generate_md].invoke
+end
+
+files = Rake::FileList.new('**/*.md')
+
+task single: files.ext('.html')
+multitask parallel: files.ext('.html')
+
+rule '.html' => '.md' do |t|
+  sh "pandoc -o #{t.name} #{t.source}"
+end
