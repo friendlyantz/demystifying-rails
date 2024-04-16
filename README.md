@@ -1,6 +1,6 @@
 breaking down Ruby on Rails parts and demistifying it
 
-- [ ] rake
+- [ ] [rake](https://github.com/ruby/rake)
 - [ ] rack
 - [x] [ActiveSupport](https://guides.rubyonrails.org/active_support_core_extensions.html)
 - [x] hash_with_indifferent_access gotchas
@@ -87,24 +87,24 @@ o"foo".starts_with?("f") # => true
 ## Time
 
 ```ruby
-   puts 1_235_551_234.to_fs(:phone, country_code: 61, area_code: true, extension: 555)
-    puts 1_234_567_890.506.to_fs(:currency) # => $1,234,567,890.51
-    puts 302.24398923423.to_fs(:percentage, precision: 5)
-    puts 1_234_567_890_123.to_fs(:human_size) # => 1.12 TB
-    puts 1_234_567_890.to_fs(:human) # => "1.23 Billion"
-    puts 12_345_678.05.to_fs(:delimited, separator: ' ') # => 12,345,678 05
+1_235_551_234.to_fs(:phone, country_code: 61, area_code: true, extension: 555)
+1_234_567_890.506.to_fs(:currency) # => $1,234,567,890.51
+302.24398923423.to_fs(:percentage, precision: 5)
+1_234_567_890_123.to_fs(:human_size) # => 1.12 TB
+1_234_567_890.to_fs(:human) # => "1.23 Billion"
+12_345_678.05.to_fs(:delimited, separator: ' ') # => 12,345,678 05
 ```
 
 ## Formatting
 
 ```ruby
-   puts 1_235_551_234.to_fs(:phone, country_code: 61, area_code: true, extension: 555)
-    puts 1_234_567_890.506.to_fs(:currency) # => $1,234,567,890.51
-    puts 302.24398923423.to_fs(:percentage, precision: 5)
-    puts 1_234_567_890_123.to_fs(:human_size) # => 1.12 TB
-    puts 1_234_567_890.to_fs(:human) # => "1.23 Billion"
-    puts 12_345_678.05.to_fs(:delimited, separator: ' ') # => 12,345,678 05
-    (Date.today..Date.tomorrow).to_fs(:db) # => "BETWEEN '2009-10-25' AND '2009-10-26'"
+1_235_551_234.to_fs(:phone, country_code: 61, area_code: true, extension: 555)
+1_234_567_890.506.to_fs(:currency) # => $1,234,567,890.51
+302.24398923423.to_fs(:percentage, precision: 5)
+1_234_567_890_123.to_fs(:human_size) # => 1.12 TB
+1_234_567_890.to_fs(:human) # => "1.23 Billion"
+12_345_678.05.to_fs(:delimited, separator: ' ') # => 12,345,678 05
+(Date.today..Date.tomorrow).to_fs(:db) # => "BETWEEN '2009-10-25' AND '2009-10-26'"
 ```
 
 ### Conversions
