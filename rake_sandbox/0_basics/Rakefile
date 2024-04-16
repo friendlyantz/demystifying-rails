@@ -1,0 +1,11 @@
+task default: :html
+
+files = Rake::FileList.new('**/*.md') do |fl|
+  fl.exclude(/^excluded_dir/)
+end
+
+task html: files.ext('.html')
+
+rule '.html' => '.md' do |t|
+  sh "pandoc -o #{t.name} #{t.source}"
+end

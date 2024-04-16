@@ -1,0 +1,10 @@
+
+task default: :instrustions
+
+task :instrustions do
+  require 'colorize'
+  user        = `whoami`.strip.capitalize.light_red
+  current_dir = `basename $(pwd)`.strip.yellow
+  puts "Welcome #{user} to the #{current_dir} directory"
+  puts "This is the instrustions task".red
+end

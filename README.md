@@ -1,6 +1,7 @@
 breaking down Ruby on Rails parts and demistifying it
 
 - [ ] [rake](https://github.com/ruby/rake)
+  - [Fantastic free course by Avdi Grim](https://graceful.dev/courses/the-freebies/modules/rake-and-project-automation/topic/episode-129-rake/)
 - [ ] rack
 - [x] [ActiveSupport](https://guides.rubyonrails.org/active_support_core_extensions.html)
 - [x] hash_with_indifferent_access gotchas
@@ -22,6 +23,36 @@ breaking down Ruby on Rails parts and demistifying it
 - [ ] Routes: sinatra/hanami/Roda better for
 - [ ] templates: ERB
 - [ ] dissecting-rails book/site
+
+# Rake
+
+[free course by Avdi Grim](https://graceful.dev/courses/the-freebies/modules/rake-and-project-automation/topic/episode-129-rake/)
+
+## Basic FileList and script
+
+create a basic `Rakefile`:
+
+```ruby
+task default: :html
+
+files = Rake::FileList.new('**/*.md') do |fl|
+  fl.exclude(/^excluded_dir/)
+end
+
+task html: files.ext('.html')
+
+rule '.html' => '.md' do |t|
+  sh "pandoc -o #{t.name} #{t.source}"
+end
+```
+
+Run it
+
+```sh
+rake
+# or for debugging
+rake --trace
+```
 
 # Active Support
 
