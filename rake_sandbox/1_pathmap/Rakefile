@@ -1,0 +1,19 @@
+task default: :list_files
+
+directory 'ship_it🚢'
+
+task list_files: 'Rakefile' do
+  Rake::FileList.new('**/*')
+    .pathmap("%f")
+    .each { |file| puts file }
+
+  puts "-------Rename-files and ext----------"
+
+  Rake::FileList.new('**/*.md')
+    .pathmap("%{ch,lalala}X.dida")
+    .each { |file| puts file }
+end
+
+task :clean do
+  rm_rf 'ship_it🚢'
+end
