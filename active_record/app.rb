@@ -1,8 +1,9 @@
 require 'active_record'
+require 'awesome_print'
 
 ActiveRecord::Base.establish_connection(
   adapter: 'sqlite3',
-  database: 'sample.sqlite3'
+  database: 'db/sample.sqlite3'
 )
 
 class CreateUsers < ActiveRecord::Migration[6.0]

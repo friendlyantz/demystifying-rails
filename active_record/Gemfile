@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 # gem "rails"
 
-gem "sqlite3", "~> 1.7"
+gem "sqlite3"
 
-gem "activerecord", "~> 7.1"
+gem "activerecord"
+
+gem "awesome_print"

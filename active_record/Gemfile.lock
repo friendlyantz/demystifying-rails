@@ -17,6 +17,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    awesome_print (1.9.2)
     base64 (0.2.0)
     bigdecimal (3.1.7)
     concurrent-ruby (1.2.3)
@@ -46,6 +47,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 7.1)
+  awesome_print (~> 1.9)
   sqlite3 (~> 1.7)
 
 BUNDLED WITH
