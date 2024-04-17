@@ -1,0 +1,7 @@
+
+task default: :install
+
+task :install do
+  sh "gem install rackup"
+  sh "rackup"
+end
