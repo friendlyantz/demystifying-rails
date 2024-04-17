@@ -13,12 +13,13 @@ end
 
 task :instrustions do
   require 'colorize'
+  puts
   puts "Hi #{USER.green}! Welcome to #{CURRENT_DIR.red}" + " POWERED BY RAKE".yellow
   puts <<~HEREDOC
 
     Getting started
 
-    rake install                  # Install dependencies
-    rake lint                     # Run linter
+    rake install                  Install dependencies
+    rake lint                     Run linter
   HEREDOC
 end
