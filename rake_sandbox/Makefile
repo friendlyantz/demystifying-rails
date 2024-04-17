@@ -17,25 +17,9 @@ install:
 	bundle install
 	brew install pandoc
 
-.PHONY: test
-test:
-	bundle exec rspec
-
-.PHONY: run
-run:
-	bundle exec ruby ./bin/run
-
 .PHONY: lint
 lint:
 	bundle exec rubocop -a
-
-.PHONY: lint-unsafe
-lint-unsafe:
-	bundle exec rubocop -A
-
-.PHONY: lint-checkonly
-lint-checkonly:
-	bundle exec rubocop
 
 .PHONY: usage
 usage:
@@ -45,8 +29,5 @@ usage:
 	@echo "Getting started"
 	@echo
 	@echo "${YELLOW}make install${NC}                  install dependencies"
-	@echo "${YELLOW}make test${NC}                     run tests"
-	@echo "${YELLOW}make run${NC}                      launch app"
 	@echo "${YELLOW}make lint${NC}                     lint app"
-	@echo "${YELLOW}make lint-unsafe${NC}              lint app(UNSAFE)"
 	@echo

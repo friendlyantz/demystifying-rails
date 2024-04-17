@@ -11,7 +11,7 @@ end
 task :clean do
   sh 'rm -rf file*.{md,html}'
   # rm_rf 'file*.{md,html}'
-  Rake::Task[:generate_md].invoke
+  # Rake::Task[:generate_md].invoke
 end
 
 files = Rake::FileList.new('**/*.md')
