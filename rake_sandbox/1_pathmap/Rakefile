@@ -17,3 +17,9 @@ end
 task :clean do
   rm_rf 'ship_it🚢'
 end
+
+task :touch => 'ship_it🚢' do
+  touch 'ship_it🚢/file1.txt'
+  touch 'ship_it🚢/file2.txt'
+  touch 'ship_it🚢/file3.txt'
+end

@@ -1,9 +1,9 @@
 breaking down Ruby on Rails parts and demistifying it
 
 - [x] [Bundler](https://github.com/rubygems/bundler)
-- [x] [rake](https://github.com/ruby/rake)
+- [x] [Rake](https://github.com/ruby/rake)
   - [Fantastic free course by Avdi Grim](https://graceful.dev/courses/the-freebies/modules/rake-and-project-automation/topic/episode-129-rake/)
-- [ ] rack
+- [ ] [Rack](https://github.com/rack/rack)
 - [x] [ActiveSupport](https://guides.rubyonrails.org/active_support_core_extensions.html)
 - [x] hash_with_indifferent_access gotchas
 - [ ] ActiveRecord
@@ -57,6 +57,7 @@ ri FileUtils
 ## Basic FileList and script
 
 create a basic `Rakefile`:
+> you need `pandoc` install, as it is used in the example
 
 ```ruby
 task default: :html
@@ -126,6 +127,30 @@ refer Rakefile in `rake_sandbox/2_parallel` dir
 ```ruby
 task single: files.ext('.html')
 multitask parallel: files.ext('.html')
+```
+
+# Rack
+
+Minimalistic middleware / interfaces, that bridges between web servers, web frameworks, and web application into a single method call.
+
+try building an app with Rack, you don't need a framework
+
+```ruby
+# config.ru
+run do |env|
+  [200, { "some_header" => "lalala"}, ["Hello World"]]
+end
+```
+
+```sh
+gem install rack
+rackup # starts your default web server on 9292
+# or specify alternative webserver, i.e. 'webrick'
+rackup -s webrick
+```
+
+```sh
+curl -I http://127.0.0.1:9292
 ```
 
 # Active Support
