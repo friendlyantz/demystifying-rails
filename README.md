@@ -13,8 +13,8 @@ breaking down Ruby on Rails parts and demistifying it
   - [ ] [callbacks](https://guides.rubyonrails.org/active_record_callbacks.html)
   - [ ] [Associations](https://guides.rubyonrails.org/association_basics.html)
   - [ ] [Query Interface](https://guides.rubyonrails.org/active_record_querying.html)
-- [ ] ActiveModel
-- [ ] ActiveMailer - running as standalone mailer
+- [x] [ActiveModel](https://guides.rubyonrails.org/active_model_basics.html)
+- [x] [ActiveMailer](https://guides.rubyonrails.org/action_mailer_basics.html) - running as standalone mailer
 - [ ] ActiveJob
 - [ ] others are too intertwined dependencies on the rest of rails to run individually - these are better run inside rails:
   - ActionCable,
@@ -357,3 +357,68 @@ ActiveRecord::LogSubscriber.attach_to :active_record
 ---
 
 # ActiveModel
+
+```ruby
+ include ActiveModel::Model # similar to `ActiveRecord::Base`
+  include ActiveModel::API # validation
+   include ActiveModel::Validations
+   extend ActiveModel::Translation # i18n gem integration
+   include ActiveModel::Conversion # .persisted?
+```
+
+---
+
+```ruby
+ extend ActiveModel::Callbacks # before_update :reset_me
+
+ include ActiveModel::AttributeMethods # define meta attributes
+  attribute_method_prefix 'reset_'
+  define_attribute_methods 'age'
+  def reset_attribute(attribute) = # your nobel prize logic
+```
+
+---
+
+```ruby
+ include ActiveModel::Dirty # model.changed?
+
+ include ActiveModel::Serialization
+ include ActiveModel::Serializers::JSON
+```
+
+---
+
+```ruby
+ include ActiveModel::SecurePassword
+  has_secure_password
+  attr_accessor :password_digest
+```
+
+---
+
+# ActionMailer
+
+```ruby
+require 'action_mailer'
+require 'letter_opener'
+
+ActionMailer::Base.add_delivery_method :letter_opener, LetterOpener::DeliveryMethod, location: File.expand_path('../tmp/letter_opener', __FILE__)
+ActionMailer::Base.delivery_method = :letter_opener
+
+class LalaMailer < ActionMailer::Base
+  def notify
+    mail(
+      to: 'ruby@australia.com',
+      from: 'friendlyantz@pm.me',
+      subject: 'Hello, World!'
+    ) do |format|
+      format.text { 'This is my text message' }
+      format.html { '<h1>this is my html message</h1>' }
+    end
+  end
+end
+
+LalaMailer.notify.deliver_now
+```
+
+---

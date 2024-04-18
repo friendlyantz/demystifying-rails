@@ -1,0 +1,7 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gem "actionmailer"
+
+gem "letter_opener", "~> 1.10"
