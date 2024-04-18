@@ -14,6 +14,7 @@ GEM
       mutex_m
       tzinfo (~> 2.0)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.7)
     colorize (1.1.0)
     concurrent-ruby (1.2.3)
@@ -32,6 +33,7 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel
+  bcrypt
   colorize
 
 BUNDLED WITH

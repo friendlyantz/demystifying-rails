@@ -354,4 +354,6 @@ end
 ActiveRecord::LogSubscriber.attach_to :active_record
 ```
 
+---
+
 # ActiveModel
