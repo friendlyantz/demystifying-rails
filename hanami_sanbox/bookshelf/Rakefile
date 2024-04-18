@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+require 'colorize'
+task default: :instrustions
+USER = `whoami`.strip
+CURRENT_DIR = `basename $(pwd)`.strip
+
+task :install do
+  sh "bundle install"
+end
+
+task :server do
+  sh "bundle exec hanami dev"
+end
+
+task :web do
+  sh "open http://localhost:2300"
+end
+
+task :test do
+  require "hanami/rake_tasks"
+end
+
+task :instrustions do
+  require 'colorize'
+  puts
+  puts "Hi #{USER.green}! Welcome to #{CURRENT_DIR.red}" + " POWERED BY RAKE".yellow
+  puts <<~HEREDOC
+
+    Getting started
+
+    rake install                  Install dependencies
+    rake server                   Run the server
+    rake web                      Open the browser
+    rake lint                     Run linter
+  HEREDOC
+end
