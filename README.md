@@ -282,3 +282,76 @@ numbers # => [0, 2, 4, 6, 8]
 ```ruby
 %r{.}m.multiline? # => true
 ```
+
+# ActiveRecord
+
+ActiveRecord is essentially ActiveModel with persistence layer
+
+```ruby
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+  adapter: 'sqlite3',
+  database: 'sample.sqlite3'
+)
+```
+
+---
+
+```ruby
+class CreateUsers < ActiveRecord::Migration[6.0]
+  def change
+    create_table :users do |t|
+      t.string :name
+    end
+  end
+end
+
+CreateUsers.new.migrate(:up)
+```
+
+---
+
+```ruby
+class User < ActiveRecord::Base
+  validates_presence_of :name, on: :create
+
+  has_many :posts
+end
+```
+
+----
+
+- [ ] ActiveRecord
+  - [ ] [basics](https://guides.rubyonrails.org/active_record_basics.html)
+  - [ ] [migrations](https://guides.rubyonrails.org/active_record_migrations.html)
+  - [ ] [validations](https://guides.rubyonrails.org/active_record_validations.html)
+  - [ ] [callbacks](https://guides.rubyonrails.org/active_record_callbacks.html)
+  - [ ] [Associations](https://guides.rubyonrails.org/association_basics.html)
+  - [ ] [Query Interface](https://guides.rubyonrails.org/active_record_querying.html)
+
+##  can't figure out what's causing a specific query in rails?
+
+[look no further]([https://www.mayerdan.com/ruby/2022/06/27/rails-query-tracing](https://www.mayerdan.com/ruby/2022/06/27/rails-query-tracing)
+
+```ruby
+module ActiveRecord
+  class LogSubscriber < ActiveSupport::LogSubscriber
+    def sql(event)
+      # NOTE: I add a global $ignore_query == false && if I need to say ignore all the factories or before/after spec specific queries to help
+      # only find callers in application code.
+      if /FROM "some_table" WHERE "some_condition"/.match?(event.payload[:sql])
+        Rails.logger.info "SQL FOUND #{caller_locations[15...150]}" 
+        binding.irb if ENV["QUERY_BINDING"]
+        # or
+        # require 'awesome_print' 
+        # ap caller if ENV["QUERY_BINDING"]
+      end
+    end
+  end
+end
+
+ActiveRecord::LogSubscriber.attach_to :active_record
+```
+
+# ActiveModel
