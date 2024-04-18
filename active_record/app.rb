@@ -33,6 +33,7 @@ CreatePosts.new.migrate(:up)
 
 class User < ActiveRecord::Base
   validates_presence_of :name, on: :create, message: "can't be blank"
+  validates_uniqueness_of :name, on: :create, message: "must be unique"
 
   has_many :posts
 end
@@ -42,3 +43,9 @@ class Post < ActiveRecord::Base
 end
 
 binding.irb
+
+# user_a = User.new(name: 'Anton')
+# user_a.save!
+# user_b = User.new(name: 'Anton')
+# user_b.valid?
+# user_b.errors

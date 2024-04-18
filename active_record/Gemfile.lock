@@ -46,9 +46,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (~> 7.1)
-  awesome_print (~> 1.9)
-  sqlite3 (~> 1.7)
+  activerecord
+  awesome_print
+  sqlite3
 
 BUNDLED WITH
    2.5.3
