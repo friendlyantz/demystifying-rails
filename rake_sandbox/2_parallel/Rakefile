@@ -1,7 +1,7 @@
 task default: :generate_md
 
 task :generate_md do
-  9.times do |i|
+  5.times do |i|
     File.open("file#{i}.md", 'w') do |f|
       100_000.times { f.puts("# Heading\nThis is some text.") }
     end
