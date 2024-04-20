@@ -5,7 +5,7 @@ class Lala
   attr_accessor :greeting
   validates :greeting, presence: true
 
-
+  include ActiveModel::Conversion
 
 
   include ActiveModel::AttributeMethods
@@ -15,8 +15,6 @@ class Lala
   def reset_attribute(attribute)
     send("#{attribute}=", 'Hey!')
   end
-
-
 
 
   extend ActiveModel::Callbacks
@@ -30,8 +28,6 @@ class Lala
   def say_bye
     puts 'Bye!'.red
   end
-
-
 
 
   include ActiveModel::SecurePassword
