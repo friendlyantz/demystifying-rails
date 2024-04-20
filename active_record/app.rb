@@ -42,10 +42,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
 end
 
-binding.irb
+u = User.new(name: 'Anton')
 
-# user_a = User.new(name: 'Anton')
-# user_a.save!
-# user_b = User.new(name: 'Anton')
-# user_b.valid?
-# user_b.errors
+binding.irb
+u.valid?
+u.errors
