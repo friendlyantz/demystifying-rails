@@ -6,5 +6,5 @@ task :install do
 end
 
 task :rackup do
-  sh "rackup"
+  sh "rackup -p 3011"
 end
