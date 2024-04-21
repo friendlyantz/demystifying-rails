@@ -23,7 +23,7 @@ app = proc do |env|
   when '/users'
     [200, {},
      ["Users: \n" + User.all.map { |u| u.name }.join("\n")]]
-  when /posts/
+  when /posts/, '/'
     [
       200,
       {},
@@ -47,6 +47,8 @@ app = proc do |env|
                     .join('<br>')
                 }
               </ul>
+
+              <a href="/form">Go to Form</a> <!-- This is the new link to the form -->
             </body>
           </html>
         HTML
@@ -57,9 +59,18 @@ app = proc do |env|
       Post.create(user: User.find_by(name: 'Rubyists'), content: '🌶️' + req.params['comment'])
       form_data = req.params
       # process form_data here...
-      [200, {}, ["Form data received: #{form_data.inspect}"]]
+      [200,
+       { 'content-type' => 'text/html' },
+       [
+        "Form data received: #{form_data.inspect}" +
+              '
+              <a href="/posts">Go to Posts</a> <!-- This is the new link to the form -->
+              '
+        ]
+      ]
     else
-      [200, { 'content-type' => 'text/html' },
+      [200,
+       { 'content-type' => 'text/html' },
        ['<form method="POST"><input type="text" name="comment"><input type="submit"></form>']]
     end
   else
