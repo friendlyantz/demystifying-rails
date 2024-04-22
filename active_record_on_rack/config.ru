@@ -58,37 +58,18 @@ app = proc do |env|
     if req.post?
       Post.create(user: User.find_by(name: 'Rubyists'), content: '🌶️' + req.params['comment'])
       form_data = req.params
-      # process form_data here...
-      [200,
-       { 'content-type' => 'text/html' },
-       [
-        "Form data received: #{form_data.inspect}" +
-              '
-              <a href="/posts">Go to Posts</a> <!-- This is the new link to the form -->
-              '
-        ]
+      [ 200, { 'content-type' => 'text/html' },
+       [ "Form data received: #{form_data.inspect}" + '<a href="/posts">Go to Posts</a>' ]
       ]
     else
-      [200,
-       { 'content-type' => 'text/html' },
-       ['<form method="POST"><input type="text" name="comment"><input type="submit"></form>']]
+      [
+        200,
+        { 'content-type' => 'text/html' },
+        ['<form method="POST"><input type="text" name="comment"><input type="submit"></form>']
+      ]
     end
   else
-    [404, { 'content-type' => 'text/html' },
-     [
-       <<~HTML
-         <!DOCTYPE html>
-         <html>
-           <head>
-             <title>Not Found</title>
-             <meta charset="UTF-8">
-           </head>
-           <body>
-             <h1>Not Found🤷🏼</h1>
-           </body>
-         </html>
-       HTML
-     ]]
+    [404, { 'content-type' => 'text/html' }, [File.open('404.html').read]]
   end
 end
 
