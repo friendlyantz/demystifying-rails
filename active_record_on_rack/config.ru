@@ -48,7 +48,7 @@ app = proc do |env|
                 }
               </ul>
 
-              <a href="/form">Go to Form</a> <!-- This is the new link to the form -->
+              <a href="/form">Go to Form</a>
             </body>
           </html>
         HTML
