@@ -12,10 +12,9 @@ task :lint do
 end
 
 task :instrustions do
-  require 'colorize'
-  puts
-  puts "Hi #{USER.green}! Welcome to #{CURRENT_DIR.red}" + " POWERED BY RAKE".yellow
   puts <<~HEREDOC
+
+    Hi #{USER.green}! Welcome to #{CURRENT_DIR.red} #{"POWERED BY RAKE".yellow}
 
     Getting started
 

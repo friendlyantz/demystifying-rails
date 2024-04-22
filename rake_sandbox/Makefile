@@ -15,7 +15,6 @@ APP_REVISION    = $(shell git rev-parse HEAD)
 .PHONY: install
 install:
 	bundle install
-	brew install pandoc
 
 .PHONY: lint
 lint:

@@ -31,6 +31,7 @@ class Account
      assoc.has_many :invoices
      assoc.has_many :expenses
   end
+  # instead has_many :expenses, dependent: :destroy
 end
 
 class User < ApplicationRecord
