@@ -1,18 +1,5 @@
 require File.join(__dir__, '../active_record/app')
 
-Post.destroy_all
-User.destroy_all
-
-User.create(name: 'Anton')
-User.create(name: 'Mike')
-User.create(name: 'Rian')
-User.create(name: 'Jody')
-User.create(name: 'Rubyists')
-
-Post.create(user: User.first, content: 'Fresh comment')
-Post.create(user: User.find_by(name: 'Mike'), content: 'Jak się masz? Ship it!')
-Post.create(user: User.find_by(name: 'Rian'), content: 'BuildKite rulez')
-Post.create(user: User.find_by(name: 'Jody'), content: 'Comment ça va de Jody')
 
 app = proc do |env|
   req = Rack::Request.new(env)
