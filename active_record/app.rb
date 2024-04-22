@@ -27,6 +27,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
   end
 end
 
+CreateUsers.new.migrate(:up)
 CreatePosts.new.migrate(:up)
 
 class User < ActiveRecord::Base
