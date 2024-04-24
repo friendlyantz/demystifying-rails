@@ -2,8 +2,8 @@
 
 # frozen_string_literal: true
 
-require "colorize"
-require File.join(__dir__, "../lib/app")
+require 'colorize'
+require File.join(__dir__, '../lib/app')
 
 begin
   App.new

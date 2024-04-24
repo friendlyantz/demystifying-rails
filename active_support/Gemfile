@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-ruby "3.3.0"
-gem "activesupport"
-gem "colorize"
+ruby '3.3.0'
+gem 'colorize' # this will be required by default
+gem 'pry' # this will be required by default
+gem 'rubocop', '~> 1.63' # this will be required by default
 
-gem "rubocop", "~> 1.63"
+gem 'activesupport', require: 'active_support/all' # active record needs this additional require of specific modules, but 'bundle console' does automatically require 'active_support'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Extentions
   class User
     attr_accessor :first_name
@@ -94,7 +96,7 @@ module Extentions
   def extracting_check
     puts 'Extracting check'.red
     p numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    p odd_numbers = numbers.extract! { |number| number.odd? } # => [1, 3, 5, 7, 9]
+    p(numbers.extract!(&:odd?)) # => [1, 3, 5, 7, 9]
     p numbers # => [0, 2, 4, 6, 8]
   end
 end
