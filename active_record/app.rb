@@ -54,3 +54,6 @@ Post.create(user: User.first, content: 'Fresh comment🍋')
 Post.create(user: User.find_by(name: 'Mike'), content: 'Jak się masz? Ship it!🛳️')
 Post.create(user: User.find_by(name: 'Rian'), content: 'BuildKite rulez🪁')
 Post.create(user: User.find_by(name: 'Jody'), content: 'Comment ça va de Jody🇫🇷')
+
+
+binding.irb
