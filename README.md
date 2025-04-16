@@ -153,6 +153,12 @@ rackup -s webrick
 curl -I http://127.0.0.1:9292
 ```
 
+see middleware used in your rails app
+
+```
+bin/rails middleware
+```
+
 # Active Support
 
 [docs](https://guides.rubyonrails.org/active_support_core_extensions.html)
